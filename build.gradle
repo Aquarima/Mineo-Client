@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.5.3'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'org.openjfx.javafxplugin' version '0.0.10'
+}
+
+group 'com.exalow'
+version '1.0-SNAPSHOT'
+
+javafx {
+    version = "15.0.1"
+    modules = ['javafx.controls', 'javafx.fxml']
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.xerial:sqlite-jdbc:3.36.0.1'
+    implementation group: 'com.jfoenix', name: 'jfoenix', version: '9.0.1'
+}
+
+bootJar {
+    manifest {
+        attributes 'Start-Class': 'com.exalow.mineo.DesktopApplication'
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
